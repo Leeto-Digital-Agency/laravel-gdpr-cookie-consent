@@ -58,12 +58,14 @@ export class CookiesConsent {
             this.cookiePreferences = data.consent_preferences;
             this.setCookie();
             this.updateInputs();
+            this.dispatchCookieAcceptEvent();
         }
     }
 
     loadCookiePreferences(cookie) {
         const cookieValue = cookie.split('=')[1];
         this.cookiePreferences = JSON.parse(cookieValue);
+        this.dispatchCookieAcceptEvent();
         this.updateInputs();
     }
 
