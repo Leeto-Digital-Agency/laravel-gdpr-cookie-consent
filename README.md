@@ -40,15 +40,8 @@ php artisan vendor:publish --tag="laravel-gdpr-cookie-consent-views"
 
 ## Usage
 
-```php
-$cookieConsent = new LeetoDigitalAgency\CookieConsent();
-echo $cookieConsent->echoPhrase('Hello, LeetoDigitalAgency!');
 ```
-
-## Testing
-
-```bash
-composer test
+@todo
 ```
 
 ## Changelog
@@ -66,6 +59,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Zenel Rrushi](https://github.com/leli1337)
+- [Leeto Digital Agency](https://leetodigitalagency.com/)
 - [All Contributors](../../contributors)
 
 ## License
