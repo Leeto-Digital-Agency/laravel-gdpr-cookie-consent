@@ -15,14 +15,6 @@ class CookieConsentServiceProvider extends ServiceProvider
             ], 'gdpr-cookie-consent-config');
 
             $this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/gdpr-cookie-consent'),
-            ], 'gdpr-cookie-consent-views');
-
-            $this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/gdpr-cookie-consent'),
-            ], 'gdpr-cookie-consent-lang');
-
-            $this->publishes([
                 __DIR__.'/../public' => public_path('vendor/gdpr-cookie-consent'),
             ], 'gdpr-cookie-consent-public');
 
