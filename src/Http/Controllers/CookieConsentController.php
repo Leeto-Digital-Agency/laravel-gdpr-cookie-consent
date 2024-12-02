@@ -18,7 +18,7 @@ class CookieConsentController extends Controller
 
         return response()->json([
             'in_eu' => $userInEurope,
-            'cookie_consent' => $cookieConsent
+            'cookie_consent' => $cookieConsent,
         ]);
     }
 
