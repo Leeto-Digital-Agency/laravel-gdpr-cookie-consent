@@ -2,6 +2,7 @@
 
 return [
     'enabled' => env('GDPR_COOKIE_CONSENT_ENABLED', true),
+    'mmdb_path' => env('GDPR_COOKIE_CONSENT_MMDB_PATH', storage_path('GeoLite2-Country.mmdb')),
     'cookie_consent_name' => 'cookie_consent',
     'necessary' => [
         'description' => 'Necessary cookies help make a website usable by enabling basic functions like page navigation and access to secure areas of the website. The website cannot function properly without these cookies.',

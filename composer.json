@@ -17,7 +17,9 @@
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/contracts": "^10.0||^11.0"
+        "geoip2/geoip2": "^3.1",
+        "illuminate/contracts": "^10.0||^11.0",
+        "maxmind-db/reader": "^1.12"
     },
     "require-dev": {
         "laravel/pint": "^1.14",

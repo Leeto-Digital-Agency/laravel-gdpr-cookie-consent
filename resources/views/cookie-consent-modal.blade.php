@@ -1,5 +1,9 @@
 @php
 $cookieConsentConfig = config('gdpr-cookie-consent');
+$enabled = $cookieConsentConfig['enabled'];
+if (!$enabled) {
+    return;
+}
 @endphp
 <div class="cookie-consent-popup hidden">
     <div class="cookie-consent-popup__content">

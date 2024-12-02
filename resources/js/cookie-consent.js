@@ -51,11 +51,16 @@ export class CookiesConsent {
     }
 
     handleCookiePreferencesResponse(data) {
-        if (!data || !data.consent_preferences) {
-            this.showConsentPopup();
+        if (!data || !data?.cookie_consent?.consent_preferences) {
+            if (data && data.in_eu) {
+                this.showConsentPopup();
+            } else {
+                this.dispatchCookieAcceptEvent();
+                this.changeCookiesButton.classList.add('hidden');
+            }
         } else {
             this.hideConsentPopup();
-            this.cookiePreferences = data.consent_preferences;
+            this.cookiePreferences = data.cookie_consent.consent_preferences;
             this.setCookie();
             this.updateInputs();
             this.dispatchCookieAcceptEvent();
@@ -76,7 +81,7 @@ export class CookiesConsent {
 
     showConsentPopup() {
         this.cookieConsentContainer.classList.remove('hidden');
-        this.cookieConsentPopup.classList.remove('hidden');
+        this.cookieConsentPopup.classList.add('hidden');
     }
 
     hideConsentPopup() {
