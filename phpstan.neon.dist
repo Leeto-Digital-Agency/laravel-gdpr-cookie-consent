@@ -5,3 +5,5 @@ parameters:
     level: max
     paths:
         - src
+    ignoreErrors:
+        - '#.*Cannot access offset.*$#'

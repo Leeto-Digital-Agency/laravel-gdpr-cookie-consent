@@ -6,44 +6,15 @@ use MaxMind\Db\Reader;
 
 class GdprService
 {
-    public STATIC array $EU_COUNTRIES = [
-        'AT' => 'Austria',
-        'BE' => 'Belgium',
-        'BG' => 'Bulgaria',
-        'CY' => 'Cyprus',
-        'CZ' => 'Czech Republic',
-        'DE' => 'Germany',
-        'DK' => 'Denmark',
-        'EE' => 'Estonia',
-        'ES' => 'Spain',
-        'FI' => 'Finland',
-        'FR' => 'France',
-        'GR' => 'Greece',
-        'HR' => 'Croatia',
-        'HU' => 'Hungary',
-        'IE' => 'Ireland',
-        'IT' => 'Italy',
-        'LT' => 'Lithuania',
-        'LU' => 'Luxembourg',
-        'LV' => 'Latvia',
-        'MT' => 'Malta',
-        'NL' => 'Netherlands',
-        'PL' => 'Poland',
-        'PT' => 'Portugal',
-        'RO' => 'Romania',
-        'SE' => 'Sweden',
-        'SI' => 'Slovenia',
-        'SK' => 'Slovakia',
-    ];
-
-    private static $reader = null;
+    private static ?Reader $reader = null;
 
     public static function userInEu(): bool
     {
         $ip = self::getUserIp();
         $reader = self::getReader();
+        /** @var array<string, mixed> $data */
         $data = $reader->get($ip);
-        return $data['country']['is_in_european_union'] ?? false;
+        return (bool)($data['country']['is_in_european_union'] ?? false);
 
     }
     private static function getUserIp(): string
@@ -77,7 +48,9 @@ class GdprService
     private static function getReader(): Reader
     {
         if (self::$reader === null) {
-            self::$reader = new Reader(config('gdpr-cookie-consent.mmdb_path'));
+            /** @var string $path */
+            $path = config('gdpr-cookie-consent.mmdb_path');
+            self::$reader = new Reader($path);
         }
         return self::$reader;
     }
