@@ -18,6 +18,10 @@ class CookieConsentServiceProvider extends ServiceProvider
                 __DIR__.'/../public' => public_path('vendor/gdpr-cookie-consent'),
             ], 'gdpr-cookie-consent-public');
 
+            $this->publishes([
+                __DIR__.'/../resources/views' => resource_path('views/vendor/gdpr-cookie-consent'),
+            ], 'gdpr-cookie-consent-views');
+
             $this->commands([
                 CookieConsentCommand::class,
             ]);
