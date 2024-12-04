@@ -14,7 +14,8 @@ class GdprService
         $reader = self::getReader();
         /** @var array<string, mixed> $data */
         $data = $reader->get($ip);
-        return (bool)($data['country']['is_in_european_union'] ?? false);
+
+        return (bool) ($data['country']['is_in_european_union'] ?? false);
 
     }
 
